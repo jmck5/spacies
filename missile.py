@@ -2,9 +2,9 @@ import pygame
 ##What if I DON'T import pygame here and instead pass the sprite in from the main program in the constructor??
 
 class Missile():
-    def __init__(self, x):
+    def __init__(self, x, y):
         self.x = x
-        self.y = 500
+        self.y = y
         self.sprite = pygame.image.load('green_missile.png')
         self.explosionSound = pygame.mixer.Sound("Explosion2.wav")
 
@@ -13,7 +13,6 @@ class Missile():
 
     def checkForCollision(self, alien):
         if(self.x > alien.x and self.x < alien.x+alien.width and self.y <= alien.y+alien.height and self.y >= alien.y):
-            print("Explode")
             self.explosionSound.play()
             return True
         else:

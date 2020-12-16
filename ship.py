@@ -2,13 +2,12 @@ import pygame
 import missile
 
 class Ship:
-    def __init__(self, sprite):
-        self.x = 300 - 1
-        self.y = 600
+    def __init__(self, sprite, x, y):
+        self.x = x
+        self.y = y
         self.speed = 5
         self.description = "Space ship"
         self.direction = "still"
-        #self.sprite = pygame.image.load("ship.png")
         self.sprite = sprite
         self.missiles = []
         self.fireSound = pygame.mixer.Sound("Laser_Shoot4.wav")
@@ -23,6 +22,5 @@ class Ship:
             self.x = min(1200-(self.width/2), self.x+self.speed)
     
     def fire(self):
-        self.missiles.append(missile.Missile(self.x+(self.width/2) ))
+        self.missiles.append(missile.Missile(self.x+(self.width/2), self.y-5 ))
         self.fireSound.play()
-        print("Fire!")

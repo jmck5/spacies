@@ -25,14 +25,12 @@ class Alien:
         elif self.direction == 'left':
             self.x = self.x - self.speed
         
-        if self.direction =='right' and self.x > 1200:
-            #self.direction = 'left'
-            #self.y += 10
+        if self.direction =='right' and self.x > 1200-self.width:
+            
             pygame.event.post(self.turnLeftSignal)
             
         elif self.direction =='left' and self.x < 0:
-            #self.direction = 'right'
-            #self.y += 10
+            
             pygame.event.post(self.turnRightSignal)
 
         if ((self.sprite == self.sprites[0]) and (self.counter >= 15)):
@@ -68,19 +66,16 @@ class AlienFlotilla:
             for ship in self.fleet:
                 ship.direction = 'left'
                 ship.y+=2
-            print("Should go left")
         elif self.direction=='LEFT':
             self.direction='RIGHT'
             for ship in self.fleet:
                 ship.direction='right'
                 ship.y+=2
-            print("Should go right")
     
     def allLeft(self):
         for ship in self.fleet:
             ship.direction = 'left'
             ship.y+=5
-        print("LEFT")
 
     def allRight(self):
         for ship in self.fleet:

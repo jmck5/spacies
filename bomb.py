@@ -8,7 +8,7 @@ class Bomb:
         self.height = self.sprite.get_height()
     
     def update(self):
-        self.y +=10
+        self.y +=5
 
     def checkForCollision(self, player):
         if (self.y+self.height) >=player.y:
